@@ -102,7 +102,7 @@ declare module "ml-stat" {
 		 * @returns {number}
 		 */
 		function median(values: number[], alreadySorted?: boolean): number;
-
+    
 		/**
 		 * Computes the variance of the given values
 		 * @param {Array} values
