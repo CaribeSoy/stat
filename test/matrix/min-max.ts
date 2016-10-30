@@ -1,5 +1,6 @@
 'use strict';
 
+import * as mocha from 'mocha';
 import { matrix as stat } from '../../src/index';
 
 describe('min-max', () => {

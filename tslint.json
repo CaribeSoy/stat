@@ -2,6 +2,7 @@
   "rules": {
     "quotemark": [
       true, "single"
-    ]
+    ],
+    "no-var-requires": true
   }
 }
