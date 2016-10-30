@@ -4,7 +4,7 @@
 
 declare module "ml-stat" {
 
-	namespace array {
+	module array {
 		/**
 		 * Computes the sum of the given values
 		 * @param {Array} values
@@ -231,7 +231,7 @@ declare module "ml-stat" {
 		function cumulativeSum(array: number[]): number[];
 	}
 
-	namespace matrix {
+	module matrix {
 		/**
 		 *
 		 * @param {number[][]} matrix
