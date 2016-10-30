@@ -1,17 +1,16 @@
 {
   "name": "ml-stat",
-  "version": "1.3.4",
+  "version": "1.3.3",
   "description": "Functions for computing stats on arrays and matrices",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "index.js",
   "scripts": {
     "eslint": "eslint src test",
     "eslint-fix": "npm run eslint -- --fix",
-    "test": "mocha ./dist/test --compilers js:babel-core/register --require should --reporter mocha-better-spec-reporter --recursive"
+    "test": "mocha --require should --reporter mocha-better-spec-reporter --recursive"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CaribeSoy/stat.git"
+    "url": "https://github.com/CaribeSoy/stat.git"
   },
   "keywords": [
     "stat",
@@ -25,31 +24,17 @@
     "learning"
   ],
   "author": "Michaël Zasso",
-  "contributors": [
-    "Diana Caro"
-  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CaribeSoy/stat/issues"
   },
   "homepage": "https://github.com/CaribeSoy/stat",
   "devDependencies": {
-    "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.46",
-    "@types/should": "^8.1.30",
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "eslint": "^3.9.0",
-    "eslint-config-cheminfo": "^1.5.2",
+    "eslint": "^3.1.0",
+    "eslint-config-cheminfo": "^1.0.0",
     "eslint-plugin-no-only-tests": "^1.1.0",
-    "mocha": "^3.1.2",
-    "mocha-better-spec-reporter": "^3.0.2",
-    "should": "^11.1.1",
-    "ts-node": "^1.6.1",
-    "tslint": "^3.15.1",
-    "typescript": "^2.0.6"
-  },
-  "directories": {
-    "test": "dist/test"
+    "mocha-better-spec-reporter": "^3.0.1",
+    "mocha": "^2.5.1",
+    "should": "^8.2.2"
   }
 }

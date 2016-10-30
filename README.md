@@ -6,8 +6,6 @@
 
 Functions for computing stats on arrays and matrices
 
-## [API Documentation](https://mljs.github.io/stat/)
-
 ## Installation
 
 `$ npm install ml-stat`
