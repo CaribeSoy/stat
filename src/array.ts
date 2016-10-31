@@ -312,11 +312,13 @@ export function pooledVariance(samples: number[][], unbiased = true): number {
 	return sum / length;
 }
 /**
- *
+ * Computes the mode of the given values
+ * 
+ * @export
  * @param {number[]} values
- * @returns
+ * @returns {number}
  */
-export function mode(values: number[]) {
+export function mode(values: number[]): number {
 	const l = values.length;
 	let itemCount = new Array(l);
 	for (let i = 0; i < l; i++) {
@@ -348,11 +350,13 @@ export function mode(values: number[]) {
 }
 
 /**
- *
+ * Computes the covariance given two vectors
+ * 
+ * @export
  * @param {number[]} vector1
  * @param {number[]} vector2
- * @param unbiased = true
- * @returns
+ * @param {boolean} [unbiased=true]
+ * @returns {number}
  */
 export function covariance(vector1: number[], vector2: number[], unbiased = true): number {
 	let mean1 = mean(vector1);
@@ -375,10 +379,12 @@ export function covariance(vector1: number[], vector2: number[], unbiased = true
 		return cov / l;
 }
 /**
- *
+ * 
+ * 
+ * @export
  * @param {number[]} values
- * @param unbiased = true
- * @returns
+ * @param {boolean} [unbiased=true]
+ * @returns {number}
  */
 export function skewness(values: number[], unbiased = true): number {
 	let theMean = mean(values);
@@ -403,10 +409,12 @@ export function skewness(values: number[], unbiased = true): number {
 	}
 }
 /**
- *
+ * 
+ * 
+ * @export
  * @param {number[]} values
- * @param unbiased = true
- * @returns
+ * @param {boolean} [unbiased=true]
+ * @returns {number}
  */
 export function kurtosis(values: number[], unbiased = true): number {
 	let theMean = mean(values);
@@ -434,10 +442,12 @@ export function kurtosis(values: number[], unbiased = true): number {
 }
 
 /**
- *
+ * Computes the entropy of the given values
+ * 
+ * @export
  * @param {number[]} values
- * @param eps = 0
- * @returns
+ * @param {number} [eps=0]
+ * @returns {number}
  */
 export function entropy(values: number[], eps = 0): number {
 	let sum = 0;
@@ -448,12 +458,14 @@ export function entropy(values: number[], eps = 0): number {
 }
 
 /**
- *
+ * Computes the weighted mean of the given values
+ * 
+ * @export
  * @param {number[]} values
  * @param {number[]} weights
- * @returns
+ * @returns {number}
  */
-export function weightedMean(values: number[], weights: number[]) {
+export function weightedMean(values: number[], weights: number[]): number {
 	let sum = 0;
 	let l = values.length;
 	for (let i = 0; i < l; i++)
@@ -461,20 +473,24 @@ export function weightedMean(values: number[], weights: number[]) {
 	return sum;
 }
 /**
- *
+ * Computes the weighted standardar deviation of the given values
+ * 
+ * @export
  * @param {number[]} values
  * @param {number[]} weights
- * @returns
+ * @returns {number}
  */
 export function weightedStandardDeviation(values: number[], weights: number[]): number {
 	return Math.sqrt(weightedVariance(values, weights));
 }
 
 /**
- *
+ * Computes the weighted variance of the given values
+ * 
+ * @export
  * @param {number[]} values
  * @param {number[]} weights
- * @returns
+ * @returns {number}
  */
 export function weightedVariance(values: number[], weights: number[]): number {
 	let theMean = weightedMean(values, weights);
@@ -496,12 +512,14 @@ export function weightedVariance(values: number[], weights: number[]): number {
 
 
 /**
- *
+ * 
+ * 
+ * @export
  * @param {number[]} values
- * @param inPlace = false
- * @returns
+ * @param {boolean} [inPlace=false]
+ * @returns {number[]}
  */
-export function center(values: number[], inPlace = false): number[] {
+export function center(values: number[], inPlace: boolean = false): number[] {
 	let result = values;
 	if (!inPlace)
 		result = ([] as number[]).concat(values);
@@ -515,13 +533,15 @@ export function center(values: number[], inPlace = false): number[] {
 }
 
 /**
- *
+ * Standardize the given values
+ * 
+ * @export
  * @param {number[]} values
- * @param standardDev = standardDeviation(values)
- * @param inPlace = false
- * @returns
+ * @param {number} [standardDev=standardDeviation(values)]
+ * @param {boolean} [inPlace=false]
+ * @returns {number[]}
  */
-export function standardize(values: number[], standardDev = standardDeviation(values), inPlace = false): number[] {
+export function standardize(values: number[], standardDev: number = standardDeviation(values), inPlace: boolean = false): number[] {
 	let l = values.length;
 	let result: number[] = inPlace ? values : new Array(l);
 	for (let i = 0; i < l; i++)
@@ -530,9 +550,11 @@ export function standardize(values: number[], standardDev = standardDeviation(va
 }
 
 /**
- *
+ * Computes the cumulative sum of the given array
+ * 
+ * @export
  * @param {number[]} array
- * @returns
+ * @returns {number[]}
  */
 export function cumulativeSum(array: number[]): number[] {
 	let l = array.length;

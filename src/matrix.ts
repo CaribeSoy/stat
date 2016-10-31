@@ -1,71 +1,87 @@
-'use strict';
-
 import * as arrayStat from './array';
 
 /**
  *
+ *
  * @param {number} a
  * @param {number} b
- * @returns
+ * @returns {number}
  */
 function compareNumbers(a: number, b: number): number {
 	return a - b;
 }
 
 /**
+ * Computes the maximum of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @returns
+ * @returns {number}
  */
 export function max(matrix: number[][]): number {
 	let max = -Infinity;
 	for (let i = 0; i < matrix.length; i++) {
 		for (let j = 0; j < matrix[i].length; j++) {
-			if (matrix[i][j] > max) max = matrix[i][j];
+			if (matrix[i][j] > max) {
+				max = matrix[i][j];
+			}
 		}
 	}
 	return max;
 }
 
 /**
+ * Computes the minimum of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @returns
+ * @returns {number}
  */
 export function min(matrix: number[][]): number {
 	let min = Infinity;
 	for (let i = 0; i < matrix.length; i++) {
 		for (let j = 0; j < matrix[i].length; j++) {
-			if (matrix[i][j] < min) min = matrix[i][j];
+			if (matrix[i][j] < min) {
+				min = matrix[i][j];
+			}
 		}
 	}
 	return min;
 }
 
 /**
+ * Computes the min and max of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
+ * @returns {{min: number, max: number}}
  */
-export function minMax(matrix: number[][]): {min: number, max: number} {
+export function minMax(matrix: number[][]): { min: number, max: number } {
 	let min = Infinity;
 	let max = -Infinity;
 	for (let i = 0; i < matrix.length; i++) {
 		for (let j = 0; j < matrix[i].length; j++) {
-			if (matrix[i][j] < min) min = matrix[i][j];
-			if (matrix[i][j] > max) max = matrix[i][j];
+			if (matrix[i][j] < min) {
+				min = matrix[i][j];
+			}
+			if (matrix[i][j] > max) {
+				max = matrix[i][j];
+			}
 		}
 	}
 	return {
-		min:min,
-		max:max
+		min: min,
+		max: max
 	};
 }
 
 /**
+ * Computes the entropy of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param eps = 0
- * @returns
+ * @param {number} [eps=0]
+ * @returns {number}
  */
 export function entropy(matrix: number[][], eps = 0): number {
 	let sum = 0,
@@ -80,10 +96,12 @@ export function entropy(matrix: number[][], eps = 0): number {
 }
 
 /**
+ * Computes the mean of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param dimension = 0
- * @returns
+ * @param {number} [dimension=0]
+ * @returns {number[]}
  */
 export function mean(matrix: number[][], dimension = 0): number[] {
 	let rows = matrix.length,
@@ -126,10 +144,12 @@ export function mean(matrix: number[][], dimension = 0): number[] {
 }
 
 /**
+ * Computes the sum of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param dimension = 0
- * @returns
+ * @param {number} [dimension=0]
+ * @returns {number[]}
  */
 export function sum(matrix: number[][], dimension = 0): number[] {
 	let rows = matrix.length,
@@ -166,10 +186,12 @@ export function sum(matrix: number[][], dimension = 0): number[] {
 }
 
 /**
+ * Computes the product of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param dimension = 0
- * @returns
+ * @param {number} [dimension=0]
+ * @returns {number[]}
  */
 export function product(matrix: number[][], dimension = 0): number[] {
 	let rows = matrix.length,
@@ -206,11 +228,13 @@ export function product(matrix: number[][], dimension = 0): number[] {
 }
 
 /**
+ * Computes the standard deviation of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param {number[]} means?
- * @param {boolean} unbiased?
- * @returns
+ * @param {boolean} [unbiased]
+ * @param {number[]} [means]
+ * @returns {number[]}
  */
 export function standardDeviation(matrix: number[][], unbiased?: boolean, means?: number[]): number[] {
 	let vari = variance(matrix, means, unbiased),
@@ -222,22 +246,26 @@ export function standardDeviation(matrix: number[][], unbiased?: boolean, means?
 }
 
 /**
+ * Computes the variance of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param {number[]} means
- * @param unbiased = true
- * @returns
+ * @param {number[]} [means=mean(matrix)]
+ * @param {boolean} [unbiased=true]
+ * @returns {number[]}
  */
-export function variance(matrix: number[][], means = mean(matrix), unbiased = true): number[] {
+export function variance(matrix: number[][], means: number[] = mean(matrix), unbiased = true): number[] {
 	let rows = matrix.length;
-	if (rows === 0) return [];
+	if (rows === 0) {
+		return [];
+	}
 	let cols = matrix[0].length;
 	let vari: number[] = new Array(cols);
 
 	for (let j = 0; j < cols; j++) {
 		let sum1 = 0,
 			sum2 = 0;
-			//x = 0;
+		//x = 0;
 		for (let i = 0; i < rows; i++) {
 			let x = matrix[i][j] - means[j];
 			sum1 += x;
@@ -253,9 +281,11 @@ export function variance(matrix: number[][], means = mean(matrix), unbiased = tr
 }
 
 /**
+ * Computes the median of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @returns
+ * @returns {number[]}
  */
 export function median(matrix: number[][]): number[] {
 	let rows = matrix.length, cols = matrix[0].length;
@@ -278,9 +308,11 @@ export function median(matrix: number[][]): number[] {
 }
 
 /**
+ * Computes the mode of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @returns
+ * @returns {number[]}
  */
 export function mode(matrix: number[][]): number[] {
 	let rows = matrix.length,
@@ -320,9 +352,12 @@ export function mode(matrix: number[][]): number[] {
 }
 
 /**
+ * Computes the skewness of the given matrix
  *
- * @param matrix
- * @param unbiased
+ * @export
+ * @param {number[][]} matrix
+ * @param {boolean} [unbiased=true]
+ * @returns {number[]}
  */
 export function skewness(matrix: number[][], unbiased = true): number[] {
 	let means = mean(matrix);
@@ -353,9 +388,12 @@ export function skewness(matrix: number[][], unbiased = true): number[] {
 }
 
 /**
+ * Computes the sample kurtosis of the given matrix
  *
- * @param matrix
- * @param unbiased
+ * @export
+ * @param {number[][]} matrix
+ * @param {boolean} [unbiased=true]
+ * @returns {number[]}
  */
 export function kurtosis(matrix: number[][], unbiased = true): number[] {
 	let means = mean(matrix);
@@ -386,10 +424,13 @@ export function kurtosis(matrix: number[][], unbiased = true): number[] {
 }
 
 /**
+ * Computes the standard error of the given matrix
  *
- * @param matrix
+ * @export
+ * @param {number[][]} matrix
+ * @returns {number[]}
  */
-export function standardError(matrix: number[][]) {
+export function standardError(matrix: number[][]): number[] {
 	let samples = matrix.length;
 	let standardDeviations = standardDeviation(matrix);
 	let l = standardDeviations.length;
@@ -403,10 +444,12 @@ export function standardError(matrix: number[][]) {
 }
 
 /**
+ * Computes the covariance of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param {number} dimension?
- * @returns
+ * @param {number} [dimension]
+ * @returns {number[][]}
  */
 export function covariance(matrix: number[][], dimension?: number): number[][] {
 	return scatter(matrix, undefined, dimension);
@@ -414,12 +457,14 @@ export function covariance(matrix: number[][], dimension?: number): number[][] {
 
 /**
  *
+ *
+ * @export
  * @param {number[][]} matrix
- * @param {number} divisor?
- * @param dimension = 0
- * @returns
+ * @param {number} [divisor=matrix.length - 1]
+ * @param {number} [dimension=0]
+ * @returns {number[][]}
  */
-export function scatter(matrix: number[][], divisor?: number, dimension = 0): number[][] {
+export function scatter(matrix: number[][], divisor: number = matrix.length - 1, dimension = 0): number[][] {
 
 	if (typeof (divisor) === 'undefined') {
 		if (dimension === 0) {
@@ -477,9 +522,11 @@ export function scatter(matrix: number[][], divisor?: number, dimension = 0): nu
 }
 
 /**
+ * Computes the correlation of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @returns
+ * @returns {number[][]}
  */
 export function correlation(matrix: number[][]): number[][] {
 	let means = mean(matrix),
@@ -507,23 +554,28 @@ export function correlation(matrix: number[][]): number[][] {
 }
 
 /**
+ * Computes the zScores of the given matrix
  *
- * @param matrix
- * @param means
- * @param standardDeviations
+ * @export
+ * @param {number[][]} matrix
+ * @param {number[]} [means=mean(matrix)]
+ * @param {boolean} [standardDeviations=standardDeviation(matrix, true, means)]
+ * @returns {number[][]}
  */
-export function zScores(matrix: number[][], means = mean(matrix), standardDeviations = standardDeviation(matrix, true, means)) {
+export function zScores(matrix: number[][], means: number[] = mean(matrix), standardDeviations = standardDeviation(matrix, true, means)): number[][] {
 	return standardize(center(matrix, means, false), standardDeviations, true);
 }
 
 /**
+ * Computes the center of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param {number[]} means
+ * @param {number[]} [means=mean(matrix)]
  * @param {boolean} inPlace
- * @returns
+ * @returns {number[][]}
  */
-export function center(matrix: number[][], means = mean(matrix), inPlace: boolean): number[][] {
+export function center(matrix: number[][], means: number[] = mean(matrix), inPlace: boolean): number[][] {
 	let result = matrix,
 		l = matrix.length;
 
@@ -544,13 +596,15 @@ export function center(matrix: number[][], means = mean(matrix), inPlace: boolea
 }
 
 /**
+ * Standardize the given matrix
  *
+ * @export
  * @param {number[][]} matrix
- * @param standardDeviations = standardDeviation(matrix)
- * @param {boolean} inPlace
- * @returns
+ * @param {number[]} [standardDeviations=standardDeviation(matrix)]
+ * @param {boolean} [inPlace=true]
+ * @returns {number[][]}
  */
-export function standardize(matrix: number[][], standardDeviations = standardDeviation(matrix), inPlace: boolean): number[][] {
+export function standardize(matrix: number[][], standardDeviations: number[] = standardDeviation(matrix), inPlace = true): number[][] {
 	let result = matrix,
 		l = matrix.length;
 
@@ -574,15 +628,19 @@ export function standardize(matrix: number[][], standardDeviations = standardDev
 }
 
 /**
+ * Computes the weighted variance of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
  * @param {number[]} weights
- * @returns
+ * @returns {number[]}
  */
 export function weightedVariance(matrix: number[][], weights: number[]): number[] {
 	let means = mean(matrix);
 	let rows = matrix.length;
-	if (rows === 0) return [];
+	if (rows === 0) {
+		return [];
+	}
 	let cols = matrix[0].length;
 	let vari: number[] = new Array(cols);
 
@@ -606,11 +664,13 @@ export function weightedVariance(matrix: number[][], weights: number[]): number[
 }
 
 /**
+ * Computes the weighted mean of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
  * @param {number[]} weights
- * @param dimension = 0
- * @returns
+ * @param {number} [dimension=0]
+ * @returns {number[]}
  */
 export function weightedMean(matrix: number[][], weights: number[], dimension = 0): number[] {
 	let rows = matrix.length;
@@ -658,16 +718,16 @@ export function weightedMean(matrix: number[][], weights: number[], dimension = 
 }
 
 /**
+ * Computes the weighted covariance of the given matrix
  *
+ * @export
  * @param {number[][]} matrix
  * @param {number[]} weights
- * @param dimension = 0
- * @param means = weightedMean(matrix
- * @param weights
- * @param dimension)
- * @returns
+ * @param {number} [dimension=0]
+ * @param {number[]} [means=weightedMean(matrix, weights, dimension)]
+ * @returns {number[][]}
  */
-export function weightedCovariance(matrix: number[][], weights: number[], dimension = 0, means = weightedMean(matrix, weights, dimension)): number[][] {
+export function weightedCovariance(matrix: number[][], weights: number[], dimension = 0, means: number[] = weightedMean(matrix, weights, dimension)): number[][] {
 	let s1 = 0, s2 = 0;
 	for (let i = 0, ii = weights.length; i < ii; i++) {
 		s1 += weights[i];
@@ -679,12 +739,14 @@ export function weightedCovariance(matrix: number[][], weights: number[], dimens
 
 /**
  *
+ *
+ * @export
  * @param {number[][]} matrix
  * @param {number[]} weights
  * @param {number[]} means
- * @param factor = 1
- * @param {number} dimension?
- * @returns
+ * @param {number} [factor=1]
+ * @param {number} [dimension=0]
+ * @returns {number[][]}
  */
 export function weightedScatter(matrix: number[][], weights: number[], means: number[], factor = 1, dimension = 0): number[][] {
 	means = means || weightedMean(matrix, weights, dimension);
@@ -730,5 +792,3 @@ export function weightedScatter(matrix: number[][], weights: number[], means: nu
 	}
 	return cov;
 }
-
-
